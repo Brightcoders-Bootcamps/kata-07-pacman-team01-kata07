@@ -22,7 +22,7 @@ class Maze
     path = get_path(level)
     File.open(path, 'r').readlines.each_with_object([]) do |line, column|
       column << line.chars.each_with_object([]) do |char, row|
-        row << OBJECTS[char].new if char != "\n"
+        row << OBJECTS[char].new(column.size, row.size) if char != "\n"
       end
     end
   end
