@@ -1,3 +1,5 @@
+require 'colorize'
+
 class PacMan
   def initialize
     @state = :off
