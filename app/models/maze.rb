@@ -4,8 +4,8 @@ require_relative 'objects/power_pellets'
 
 class Maze
   LEVELS = {
-    1 => 'app/static/level-1.txt',
-    2 => 'app/static/level-2.txt'
+    1 => './static/level-1.txt',
+    2 => './static/level-2.txt'
   }.freeze
 
   OBJECTS = {
