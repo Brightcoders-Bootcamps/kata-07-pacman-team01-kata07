@@ -14,6 +14,12 @@ class Maze
     '.' => PowerPellets
   }.freeze
 
+  attr_accessor :pacman
+
+  def initialize
+    @pacman
+  end
+
   def get_path(level)
     LEVELS.keys.include?(level) ? LEVELS[level] : LEVELS[1]
   end
@@ -22,8 +28,16 @@ class Maze
     path = get_path(level)
     File.open(path, 'r').readlines.each_with_object([]) do |line, column|
       column << line.chars.each_with_object([]) do |char, row|
-        row << OBJECTS[char].new(column.size, row.size) if char != "\n"
+        if char != "\n"
+          object = OBJECTS[char].new(column.size, row.size)
+          add_objects(object, row)
+        end
       end
     end
+  end
+
+  def add_objects(object, row)
+    @pacman = object if object.instance_of? PacMan
+    row << object
   end
 end

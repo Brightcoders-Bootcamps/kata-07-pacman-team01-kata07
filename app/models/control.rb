@@ -1,5 +1,6 @@
 class Control
-  def initialize
+  def initialize(game)
+    @game = game
     @moves = {
       'w' => method(:move_up),
       'a' => method(:move_left),
@@ -15,18 +16,18 @@ class Control
   end
 
   def move_up
-    puts('w')
+    @game.move_up
   end
 
   def move_left
-    puts('a')
+    @game.move_left
   end
 
   def move_down
-    puts('s')
+    @game.move_down
   end
 
   def move_right
-    puts('d')
+    @game.move_right
   end
 end
